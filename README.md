@@ -82,3 +82,33 @@ Asegúrate de tener instalado Python 3.x. Puedes descargarlo desde [python.org](
 * **Python 3.x**
 * **Requests:** Para realizar llamadas HTTP a las APIs.
 * **Pandas:**
+
+## ⚠️ Límites de API
+
+* **ip-api.com:** El plan gratuito permite hasta 45 solicitudes por minuto desde una misma dirección IP.
+* **AbuseIPDB:** El plan gratuito permite hasta 1,000 solicitudes diarias.
+
+El script incluye pequeñas pausas entre las llamadas para ayudar a mitigar el riesgo de exceder estos límites.
+
+---
+
+## 🤝 Contribuciones
+
+¡Las contribuciones son bienvenidas! Si tienes ideas para mejorar el proyecto, no dudes en:
+
+1.  Hacer un "fork" del repositorio.
+2.  Crear una nueva rama (`git checkout -b feature/AmazingFeature`).
+3.  Implementar tus cambios.
+4.  Hacer "commit" de tus cambios (`git commit -m 'Add some AmazingFeature'`).
+5.  Hacer "push" a la rama (`git push origin feature/AmazingFeature`).
+6.  Abrir un "Pull Request".
+
+---
+
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT. Consulta el archivo `LICENSE` para más detalles.
+
+By: zere1sse
+
+---
