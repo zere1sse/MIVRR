@@ -1,113 +1,118 @@
-# Analizador de IPs Geográfico y de Reputación
+# IP Geo-Reputation Analyzer
 
 ---
 
-##  Descripción del Proyecto
+## 📝 Project Description
 
-Este proyecto es una herramienta de línea de comandos escrita en Python que permite a los usuarios obtener información detallada sobre direcciones IP. Combina datos geográficos (país, ciudad, ISP, etc.) utilizando la API de **ip-api.com** con información de reputación y posibles reportes de abuso de **AbuseIPDB**.
+This command-line tool, written in Python, allows users to gather detailed information about IP addresses. It combines **geographical data** (country, city, ISP, etc.) using the **ip-api.com API** with **reputation intelligence** and potential abuse reports from **AbuseIPDB**.
 
-Es una herramienta útil para análisis básico de inteligencia de amenazas, ciberseguridad, o simplemente para explorar la procedencia y el estado de una dirección IP.
-
----
-
-##  Características
-
-* **Análisis Geográfico:** Obtiene datos como país, ciudad, región, ISP, latitud y longitud.
-* **Análisis de Reputación:** Consulta el score de confianza de abuso, el total de reportes y la última vez que una IP fue reportada por actividades maliciosas (spam, ataques, etc.).
-* **Entrada Interactiva:** Permite al usuario ingresar una sola IP o cargar múltiples IPs desde un archivo de texto.
-* **Validación Robusta de IPs:** Utiliza la librería `ipaddress` de Python para asegurar que solo las direcciones IP válidas sean procesadas.
-* **Exportación a CSV:** Guarda todos los resultados del análisis en un archivo CSV (`informacion_ip_completa.csv`) para facilitar su posterior análisis en hojas de cálculo.
-* **Manejo Seguro de API Keys:** Utiliza variables de entorno (`.env`) para mantener las claves de API fuera del código fuente, garantizando la seguridad al compartir el proyecto en repositorios públicos como GitHub.
+This is a useful tool for basic threat intelligence analysis, cybersecurity reconnaissance, or simply for exploring the origin and status of an IP address.
 
 ---
 
-##  Cómo Empezar
+## ✨ Features
 
-Sigue estos pasos para configurar y ejecutar el proyecto en tu máquina local.
+* **Geographical Analysis:** Retrieves data such as country, city, region, ISP, latitude, and longitude.
+* **Reputation Analysis:** Queries the abuse confidence score, total reports, and the last time an IP was reported for malicious activities (spam, attacks, etc.).
+* **Interactive Input:** Users can input a single IP address via the keyboard or load multiple IPs from a text file.
+* **Robust IP Validation:** Employs Python's `ipaddress` library to ensure only valid IP addresses are processed.
+* **CSV Export:** Saves all analysis results to a CSV file (`informacion_ip_completa.csv`) for easy further analysis in spreadsheets.
+* **Secure API Key Handling:** Uses environment variables (`.env`) to keep API keys out of the source code, ensuring security when sharing the project on public repositories like GitHub.
 
-### Prerrequisitos
+---
 
-Asegúrate de tener instalado Python 3.x. Puedes descargarlo desde [python.org](https://www.python.org/downloads/).
+## 🚀 Getting Started
 
-### Instalación
+Follow these steps to set up and run the project on your local machine.
 
-1.  **Clona el repositorio:**
+### Prerequisites
+
+Make sure you have Python 3.x installed. You can download it from [python.org](https://www.python.org/downloads/).
+
+### Installation
+
+1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/tu_usuario/tu_repositorio.git](https://github.com/tu_usuario/tu_repositorio.git)
-    cd tu_repositorio
+    git clone [https://github.com/your_username/your_repository.git](https://github.com/your_username/your_repository.git)
+    cd your_repository
     ```
-    *(Reemplaza `tu_usuario` y `tu_repositorio` con tu nombre de usuario de GitHub y el nombre de tu repositorio)*
+    *(Replace `your_username` and `your_repository` with your GitHub username and repository name)*
 
-2.  **Instala las dependencias:**
+2.  **Install dependencies:**
     ```bash
     pip install -r requirements.txt
     ```
-    *(Si no tienes un `requirements.txt` aún, créalo con `pip freeze > requirements.txt` después de instalar las librerías `requests`, `pandas`, `python-dotenv`.)*
+    *(If you don't have a `requirements.txt` yet, create it with `pip freeze > requirements.txt` after installing `requests`, `pandas`, `python-dotenv`.)*
 
-3.  **Obtén tu API Key de AbuseIPDB:**
-    * Ve a [AbuseIPDB.com](https://www.abuseipdb.com/) y regístrate para una cuenta gratuita.
-    * Inicia sesión y encuentra/genera tu API Key en la sección "API" o "My Account".
+3.  **Obtain your AbuseIPDB API Key:**
+    * Go to [AbuseIPDB.com](https://www.abuseipdb.com/) and sign up for a free account.
+    * Log in and find/generate your API Key in the "API" or "My Account" section.
 
-4.  **Configura tus variables de entorno:**
-    * Crea un archivo llamado `.env` en la raíz de tu proyecto (al mismo nivel que `Mivrr.py`).
-    * Dentro de `.env`, añade la siguiente línea, reemplazando `TU_API_KEY_AQUI` con tu clave real de AbuseIPDB:
+4.  **Configure your environment variables:**
+    * Create a file named `.env` in the root of your project (at the same level as `Mivrr.py`).
+    * Inside `.env`, add the following line, replacing `YOUR_API_KEY_HERE` with your actual AbuseIPDB key:
         ```
-        ABUSEIPDB_API_KEY=TU_API_KEY_AQUI
+        ABUSEIPDB_API_KEY=YOUR_API_KEY_HERE
         ```
-    * **¡Importante!** Este archivo `.env` está incluido en `.gitignore` y **no será subido a GitHub** para proteger tu clave.
+    * **Important!** This `.env` file is included in `.gitignore` and **will not be uploaded to GitHub** to protect your key.
 
 ---
 
-##  Cómo Usar
+## 🏃 How To Use
 
-1.  **Ejecuta el script:**
+1.  **Run the script:**
     ```bash
     python Mivrr.py
     ```
 
-2.  **Elige una opción:** El programa te preguntará cómo deseas proporcionar las direcciones IP:
-    * `1`: Para ingresar una sola IP por teclado.
-    * `2`: Para leer IPs desde un archivo de texto (una IP por línea).
+2.  **Choose an option:** The program will ask you how you'd like to provide the IP addresses:
+    * `1`: To enter a single IP via the keyboard.
+    * `2`: To read IPs from a text file (one IP per line).
 
-3.  **Proporciona la IP o el archivo:**
-    * Si eliges `1`, ingresa la IP cuando se te solicite.
-    * Si eliges `2`, ingresa el nombre de tu archivo de texto (ej. `ips.txt`). Asegúrate de que el archivo exista en el mismo directorio o proporciona la ruta completa.
+3.  **Provide the IP or file:**
+    * If you choose `1`, enter the IP when prompted.
+    * If you choose `2`, enter the name of your text file (e.g., `ips.txt`). Ensure the file exists in the same directory or provide the full path.
 
-4.  **Resultados:** El script procesará las IPs, mostrando el progreso en la consola. Una vez completado, generará un archivo CSV llamado `informacion_ip_completa.csv` en el mismo directorio, que contendrá todos los datos recolectados. También imprimirá las primeras filas del CSV en la consola.
+4.  **Results:** The script will process the IPs, showing progress in the console. Once completed, it will generate a CSV file named `informacion_ip_completa.csv` in the same directory, containing all collected data. It will also print the first few rows of the CSV to the console.
 
 ---
 
-##  Tecnologías Utilizadas
+## 📚 Technologies Used
 
 * **Python 3.x**
-* **Requests:** Para realizar llamadas HTTP a las APIs.
-* **Pandas:**
-
-## ⚠️ Límites de API
-
-* **ip-api.com:** El plan gratuito permite hasta 45 solicitudes por minuto desde una misma dirección IP.
-* **AbuseIPDB:** El plan gratuito permite hasta 1,000 solicitudes diarias.
-
-El script incluye pequeñas pausas entre las llamadas para ayudar a mitigar el riesgo de exceder estos límites.
+* **Requests:** For making HTTP calls to APIs.
+* **Pandas:** For data manipulation and CSV export.
+* **`ipaddress` (Python standard library):** For IP address validation.
+* **`python-dotenv`:** For secure management of environment variables (API Keys).
+* **`time` (Python standard library):** To add pauses between API calls and prevent rate limiting.
 
 ---
 
-## 🤝 Contribuciones
+## ⚠️ API Limitations
 
-¡Las contribuciones son bienvenidas! Si tienes ideas para mejorar el proyecto, no dudes en:
+* **ip-api.com:** The free tier allows up to 45 requests per minute from the same IP address.
+* **AbuseIPDB:** The free tier typically allows up to 1,000 requests per day.
 
-1.  Hacer un "fork" del repositorio.
-2.  Crear una nueva rama (`git checkout -b feature/AmazingFeature`).
-3.  Implementar tus cambios.
-4.  Hacer "commit" de tus cambios (`git commit -m 'Add some AmazingFeature'`).
-5.  Hacer "push" a la rama (`git push origin feature/AmazingFeature`).
-6.  Abrir un "Pull Request".
+The script includes small pauses between calls to help mitigate the risk of exceeding these limits.
 
 ---
 
-## 📄 Licencia
+## 🤝 Contributions
 
-Este proyecto está bajo la Licencia MIT. Consulta el archivo `LICENSE` para más detalles.
+Contributions are welcome! If you have ideas to improve the project, feel free to:
+
+1.  Fork the repository.
+2.  Create a new branch (`git checkout -b feature/AmazingFeature`).
+3.  Implement your changes.
+4.  Commit your changes (`git commit -m 'Add some AmazingFeature'`).
+5.  Push to the branch (`git push origin feature/AmazingFeature`).
+6.  Open a Pull Request.
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
 
 By: zere1sse
 
